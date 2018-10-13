@@ -40,6 +40,9 @@ export default {
 
   li {
     color: #fff;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
     height: (100vh / 6);
   }
 }

@@ -42,7 +42,7 @@ body {
   height: 100vh;
   padding: 0;
   max-width: 100px;
-  width: 10vw;
+  width: 12vw;
 }
 
 #main {

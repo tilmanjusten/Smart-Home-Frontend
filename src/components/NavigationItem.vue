@@ -1,5 +1,5 @@
 <template>
-    <router-link v-bind:to="to" class="navigation-item">
+    <router-link v-bind:to="to" :class="'navigation-item navigation-item--' + type">
       <span class="navigation-item__label">{{label}}</span>
       <svg class="navigation-item__icon" v-if="type === 'lights'" width="100px" height="100px" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M68.543 48.957a23.356 23.356 0 0 0 4.375-13.543A22.852 22.852 0 0 0 50 12.496a22.852 22.852 0 0 0-22.918 22.918c0 5 1.668 9.793 4.375 13.543l.207.207c.418.625 1.043 1.25 1.457 1.875 2.918 3.543 8.543 11.25 8.543 17.707h16.668c0-6.457 5.625-14.168 8.543-17.707.625-.625 1.043-1.25 1.457-1.875 0 .004.211-.207.211-.207zM41.668 72.918h16.668v4.168H41.668zM41.668 81.25h16.668v4.168H41.668z"/></svg>
       <svg class="navigation-item__icon" v-if="type === 'settings'" width="100px" height="100px" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M37.918 41.875l3.75 2.707 2.918-2.918-2.707-3.75c.625-1.043 1.25-2.5 1.457-3.75l4.582-.832v-4.168l-4.582-.832c-.418-1.25-.832-2.707-1.457-3.75l2.707-3.75-2.918-2.918-3.75 2.707c-1.043-.625-2.5-1.25-3.75-1.457l-.836-4.582h-4.168l-.832 4.582c-1.25.418-2.707.832-3.75 1.457l-3.75-2.707-2.918 2.918 2.707 3.75c-.625 1.043-1.25 2.5-1.457 3.75l-4.582.836v4.168l4.582.832c.418 1.25.832 2.707 1.457 3.75l-2.707 3.75 2.918 2.918 3.75-2.707c1.043.625 2.5 1.25 3.75 1.457l.836 4.582h4.168l.832-4.582c1.25-.211 2.5-.836 3.75-1.461zM25 31.25c0-3.543 2.707-6.25 6.25-6.25s6.25 2.707 6.25 6.25-2.707 6.25-6.25 6.25S25 34.793 25 31.25zM73.332 68.957l7.5 2.082 2.293-5.832-6.457-3.543c.207-1.457.418-3.125.207-4.582l6.25-3.543-2.5-5.832-6.25 1.668c-1.043-1.668-2.293-2.918-3.543-3.957l1.668-6.043-5.832-2.293-2.918 5c-1.875-.418-3.957-.418-6.043-.207l-2.918-5-5.621 2.707L50.625 45c-1.668 1.25-3.125 2.707-4.168 4.375l-5.625-1.457-2.293 5.832 5.418 3.125c-.207 1.875 0 3.543.207 5.418l-5.625 3.332 2.5 5.832 6.875-1.875c1.043 1.25 2.082 2.293 3.543 3.125l-1.875 7.082 5.832 2.293 3.75-6.668c1.25.207 2.707 0 3.957-.207l3.957 6.875 5.832-2.5-2.082-7.5c.629-1.04 1.672-2.082 2.504-3.125zm-21.25-10.625c0-4.582 3.75-8.332 8.332-8.332 4.582 0 8.332 3.75 8.332 8.332s-3.75 8.332-8.332 8.332c-4.582.004-8.332-3.746-8.332-8.332z"/></svg>
@@ -22,12 +22,16 @@ export default {
 
 <style lang="scss" scoped>
 .navigation-item {
+  border-top: 1px solid #333;
   color: inherit;
-  display: block;
+  display: flex;
+  justify-content: center;
+  flex: 1 0 100%;
   font-weight: bold;
+  height: 100%;
+  overflow: hidden;
   text-align: center;
   text-decoration: none;
-  text-overflow: hidden;
 
   &.router-link-exact-active {
     color: #42b983;
@@ -39,19 +43,55 @@ export default {
   }
 }
 
+.navigation-item--trend {
+  border-top: none;
+  background: #333;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    border: 11px solid transparent;
+    border-color: #222 transparent transparent transparent;
+    height: 0;
+    width: 0;
+    display: block;
+  }
+}
+
 .navigation-item__label {
   display: none;
 }
 
 .navigation-item__icon {
+  display: block;
   height: auto;
   max-width: 100%;
   width: 50px;
+
+  // .navigation-item--trend & {
+  //   path {
+  //     fill: #bbb;
+  //   }
+  // }
+
+  .navigation-item:focus &,
+  .navigation-item:hover & {
+    path {
+      fill: #42b983;
+      transition-duration: 0.1125s;
+    }
+  }
 
   .router-link-exact-active & {
     path {
       fill: #42b983;
     }
+  }
+
+  path {
+    fill: #fff;
+    transition: fill 0.225s 0s ease-out;
   }
 }
 </style>

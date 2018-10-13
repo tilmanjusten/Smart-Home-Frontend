@@ -1,11 +1,11 @@
 <template>
     <div class="lights">
-        <LightRenderItem title="Lichterkette" />
-        <LightRenderItem title="Sofa &amp; Regal" />
-        <LightRenderItem title="Galerie" />
-        <LightRenderItem title="Tür" />
-        <LightRenderItem title="Wohnzimmer" />
-        <LightRenderItem title="Alle Lichter" />
+        <LightRenderItem deviceId="lichterkette" title="Lichterkette" />
+        <LightRenderItem deviceId="sofalicht" title="Sofa &amp; Regal" />
+        <LightRenderItem deviceId="galerielicht" title="Galerie" />
+        <LightRenderItem deviceId="tuerlicht" title="Tür" />
+        <LightRenderItem deviceId="wohnzimmerlicht" title="Wohnzimmer" />
+        <LightRenderItem deviceId="alle-lichter" title="Alle Lichter" />
     </div>
 </template>
 
@@ -23,7 +23,6 @@ export default {
 <style>
 .lights {
   align-items: flex-start;
-  background: #eef;
   display: flex;
   flex-wrap: wrap;
   min-height: 100vh;
