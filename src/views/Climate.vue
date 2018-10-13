@@ -1,8 +1,8 @@
 <template>
     <div class="climate">
-        <ClimateRenderItem title="Wohnzimmer" />
-        <ClimateRenderItem title="Schlafzimmer" />
-        <ClimateRenderItem title="Badezimmer" />
+        <ClimateRenderItem deviceId="ODIN" title="Wohnzimmer" />
+        <ClimateRenderItem deviceId="INKE" title="Schlafzimmer" />
+        <ClimateRenderItem deviceId="PURL" title="Badezimmer" />
     </div>
 </template>
 
@@ -20,7 +20,6 @@ export default {
 <style>
 .climate {
   align-items: flex-start;
-  background: #eef;
   display: flex;
   flex-wrap: wrap;
   min-height: 100vh;
