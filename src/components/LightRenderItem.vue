@@ -20,7 +20,7 @@ export default {
   ],
   data () {
     return {
-      status: 'on',
+      status: 'off',
       baseUrl: 'http://lichter.fritz.box'
     }
   },
@@ -92,13 +92,15 @@ export default {
 
   .light-item--on & {
     path {
-      fill: #fff;
+      fill: #42b983;
     }
   }
 
   .light-item--off & {
     path {
-      stroke: transparent;
+      fill: none;
+      stroke: #222;
+      stroke-width: 2px;
     }
   }
 }
