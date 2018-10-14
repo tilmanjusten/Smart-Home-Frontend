@@ -11,7 +11,7 @@ insert_final_newline = true
 [*.{js,css,scss,vue,json,html,py}]
 charset = utf-8
 
-[*.{js,json,vue}}]
+[*.{js,json,vue}]
 indent_style = space
 indent_size = 2
 
