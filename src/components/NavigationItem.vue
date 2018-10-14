@@ -34,12 +34,12 @@ export default {
   text-decoration: none;
 
   &.router-link-exact-active {
-    color: #42b983;
+    color: var(--color-green);
   }
 
   &:focus,
   &:hover {
-    color: #42b983;
+    color: var(--color-green);
   }
 }
 
@@ -78,14 +78,14 @@ export default {
   .navigation-item:focus &,
   .navigation-item:hover & {
     path {
-      fill: #42b983;
+      fill: var(--color-green);
       transition-duration: 0.1125s;
     }
   }
 
   .router-link-exact-active & {
     path {
-      fill: #42b983;
+      fill: var(--color-green);
     }
   }
 

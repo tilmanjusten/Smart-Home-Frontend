@@ -1,5 +1,5 @@
 <template>
-    <div :class="'climate-item ' + actionClass">
+    <div :class="'climate-item ' + typeClass">
       <h2 class="climate-item__label">
         {{title}}
       </h2>
@@ -33,7 +33,7 @@ export default {
   },
   data () {
     return {
-      actionClass: ''
+      typeClass: `climate-item--${this.deviceId.toLowerCase()}`
     }
   },
   computed: {
@@ -73,9 +73,7 @@ export default {
 
 <style lang="scss">
 .climate-item {
-  border: 1px solid #eee;
-  border-width: 0 0 0 0;
-  flex: 0 0 calc((100% / 3) - 1px);
+  flex: 0 0 (100% / 3);
   height: 100vh;
   text-align: center;
   align-content: center;
@@ -86,12 +84,6 @@ export default {
   font-weight: 700;
   justify-content: stretch;
   text-decoration: none;
-  transition: background 2.5s 0s linear;
-}
-
-.climate-item--has-update {
-  background: #42b983;
-  transition-duration: 0s;
 }
 
 .climate-item__label {

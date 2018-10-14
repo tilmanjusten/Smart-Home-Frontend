@@ -56,18 +56,36 @@ export default {
 
 <style lang="scss">
 .light-item {
-  border: 1px solid #eee;
-  border-width: 0 1px 1px 0;
   display: flex;
-  flex: 0 0 calc((100% / 3) - 1px);
-  height: calc(50vh - 1px);
+  flex: 0 0 (100% / 3);
+  height: 50vh;
   text-align: center;
+  position: relative;
+
+  &::before {
+    background: var(--color-green);
+    border-radius: 50%;
+    content: '';
+    display: block;
+    height: 120px;
+    position: absolute;
+    width: 120px;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 3.5rem;
+    z-index: -1;
+  }
 }
 
 .light-item--on {
 }
 
 .light-item--off {
+  &::before {
+    background: #ddd;
+  }
 }
 
 .light-item__button {
@@ -85,21 +103,22 @@ export default {
 
 .light-item__icon {
   display: block;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 
   path {
+    fill: #fff;
   }
 
   .light-item--on & {
     path {
-      fill: #42b983;
+      fill: #fff;
     }
   }
 
   .light-item--off & {
     path {
-      fill: none;
-      stroke: #222;
+      fill: #fff;
+      stroke: #fff;
       stroke-width: 2px;
     }
   }

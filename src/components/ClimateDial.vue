@@ -61,34 +61,34 @@
       <path id="T" d="M300 101h5v-1h-5v1z"/>
       <path id="U" d="M300 60h5v1h-5v-1z"/>
       <path id="V" d="M255 61h5v-1h-5v1z"/>
-      <text id="W" x="355.9" y="70" alignment-baseline="before-edge" dominant-baseline="text-before-edge" font-family="Open Sans Condensed" font-size="12" font-style="normal" font-weight="700" letter-spacing="0" style="line-height:100%" transform="translate(-10.9 -8)" xml:space="preserve">
+      <text id="W" x="355.9" y="71" alignment-baseline="before-edge" dominant-baseline="text-before-edge" font-family="'Avenir', Helvetica, Arial, sans-serif" font-size="12" font-style="normal" font-weight="700" letter-spacing="0" style="line-height:100%" transform="translate(-10.9 -8)" xml:space="preserve">
           <tspan x="355.9" alignment-baseline="before-edge" dy="0em" text-anchor="end">40°C</tspan>
       </text>
-      <text id="X" x="355.9" y="70" alignment-baseline="before-edge" dominant-baseline="text-before-edge" font-family="Open Sans Condensed" font-size="12" font-style="normal" font-weight="700" letter-spacing="0" style="line-height:100%" transform="translate(-10.9 32)" xml:space="preserve">
+      <text id="X" x="355.9" y="71" alignment-baseline="before-edge" dominant-baseline="text-before-edge" font-family="'Avenir', Helvetica, Arial, sans-serif" font-size="12" font-style="normal" font-weight="700" letter-spacing="0" style="line-height:100%" transform="translate(-10.9 32)" xml:space="preserve">
           <tspan x="355.9" alignment-baseline="before-edge" dy="0em" text-anchor="end">30°C</tspan>
       </text>
-      <text id="Y" x="355.9" y="70" alignment-baseline="before-edge" dominant-baseline="text-before-edge" font-family="Open Sans Condensed" font-size="12" font-style="normal" font-weight="700" letter-spacing="0" style="line-height:100%" transform="translate(-10.9 72)" xml:space="preserve">
+      <text id="Y" x="355.9" y="71" alignment-baseline="before-edge" dominant-baseline="text-before-edge" font-family="'Avenir', Helvetica, Arial, sans-serif" font-size="12" font-style="normal" font-weight="700" letter-spacing="0" style="line-height:100%" transform="translate(-10.9 72)" xml:space="preserve">
           <tspan x="355.9" alignment-baseline="before-edge" dy="0em" text-anchor="end">20°C</tspan>
       </text>
-      <text id="Z" x="355.9" y="70" alignment-baseline="before-edge" dominant-baseline="text-before-edge" font-family="Open Sans Condensed" font-size="12" font-style="normal" font-weight="700" letter-spacing="0" style="line-height:100%" transform="translate(-10.9 112)" xml:space="preserve">
+      <text id="Z" x="355.9" y="71" alignment-baseline="before-edge" dominant-baseline="text-before-edge" font-family="'Avenir', Helvetica, Arial, sans-serif" font-size="12" font-style="normal" font-weight="700" letter-spacing="0" style="line-height:100%" transform="translate(-10.9 112)" xml:space="preserve">
           <tspan x="355.9" alignment-baseline="before-edge" dy="0em" text-anchor="end">10°C</tspan>
       </text>
-      <text id="aa" x="355.9" y="70" alignment-baseline="before-edge" dominant-baseline="text-before-edge" font-family="Open Sans Condensed" font-size="12" font-style="normal" font-weight="700" letter-spacing="0" style="line-height:100%" transform="translate(-10.9 152)" xml:space="preserve">
+      <text id="aa" x="355.9" y="71" alignment-baseline="before-edge" dominant-baseline="text-before-edge" font-family="'Avenir', Helvetica, Arial, sans-serif" font-size="12" font-style="normal" font-weight="700" letter-spacing="0" style="line-height:100%" transform="translate(-10.9 152)" xml:space="preserve">
           <tspan x="355.9" alignment-baseline="before-edge" dy="0em" text-anchor="end">0°C</tspan>
       </text>
-      <text id="ab" x="325.9" y="70" alignment-baseline="before-edge" dominant-baseline="text-before-edge" font-family="Open Sans Condensed" font-size="10" font-style="normal" font-weight="700" letter-spacing="0" style="line-height:100%" transform="translate(-100.9 -6)" xml:space="preserve">
+      <text id="ab" x="325.9" y="70" alignment-baseline="before-edge" dominant-baseline="text-before-edge" font-family="'Avenir', Helvetica, Arial, sans-serif" font-size="10" font-style="normal" font-weight="700" letter-spacing="0" style="line-height:100%" transform="translate(-100.9 -6)" xml:space="preserve">
           <tspan x="325.9" alignment-baseline="before-edge" dy="0em">90%</tspan>
       </text>
-      <text id="ac" x="325.9" y="70" alignment-baseline="before-edge" dominant-baseline="text-before-edge" font-family="Open Sans Condensed" font-size="10" font-style="normal" font-weight="700" letter-spacing="0" style="line-height:100%" transform="translate(-100.9 34)" xml:space="preserve">
+      <text id="ac" x="325.9" y="70" alignment-baseline="before-edge" dominant-baseline="text-before-edge" font-family="'Avenir', Helvetica, Arial, sans-serif" font-size="10" font-style="normal" font-weight="700" letter-spacing="0" style="line-height:100%" transform="translate(-100.9 34)" xml:space="preserve">
           <tspan x="325.9" alignment-baseline="before-edge" dy="0em">70%</tspan>
       </text>
-      <text id="ad" x="325.9" y="70" alignment-baseline="before-edge" dominant-baseline="text-before-edge" font-family="Open Sans Condensed" font-size="10" font-style="normal" font-weight="700" letter-spacing="0" style="line-height:100%" transform="translate(-100.9 74)" xml:space="preserve">
+      <text id="ad" x="325.9" y="70" alignment-baseline="before-edge" dominant-baseline="text-before-edge" font-family="'Avenir', Helvetica, Arial, sans-serif" font-size="10" font-style="normal" font-weight="700" letter-spacing="0" style="line-height:100%" transform="translate(-100.9 74)" xml:space="preserve">
           <tspan x="325.9" alignment-baseline="before-edge" dy="0em">50%</tspan>
       </text>
-      <text id="ae" x="325.9" y="70" alignment-baseline="before-edge" dominant-baseline="text-before-edge" font-family="Open Sans Condensed" font-size="10" font-style="normal" font-weight="700" letter-spacing="0" style="line-height:100%" transform="translate(-100.9 114)" xml:space="preserve">
+      <text id="ae" x="325.9" y="70" alignment-baseline="before-edge" dominant-baseline="text-before-edge" font-family="'Avenir', Helvetica, Arial, sans-serif" font-size="10" font-style="normal" font-weight="700" letter-spacing="0" style="line-height:100%" transform="translate(-100.9 114)" xml:space="preserve">
           <tspan x="325.9" alignment-baseline="before-edge" dy="0em">30%</tspan>
       </text>
-      <text id="af" x="325.9" y="70" alignment-baseline="before-edge" dominant-baseline="text-before-edge" font-family="Open Sans Condensed" font-size="10" font-style="normal" font-weight="700" letter-spacing="0" style="line-height:100%" transform="translate(-100.9 154)" xml:space="preserve">
+      <text id="af" x="325.9" y="70" alignment-baseline="before-edge" dominant-baseline="text-before-edge" font-family="'Avenir', Helvetica, Arial, sans-serif" font-size="10" font-style="normal" font-weight="700" letter-spacing="0" style="line-height:100%" transform="translate(-100.9 154)" xml:space="preserve">
           <tspan x="325.9" alignment-baseline="before-edge" dy="0em">10%</tspan>
       </text>
     </defs>

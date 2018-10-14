@@ -1,7 +1,7 @@
 <template>
     <div class="climate">
-        <ClimateRenderItem deviceId="ODIN" title="Wohnzimmer" />
         <ClimateRenderItem deviceId="INKE" title="Schlafzimmer" />
+        <ClimateRenderItem deviceId="ODIN" title="Wohnzimmer" />
         <ClimateRenderItem deviceId="PURL" title="Badezimmer" />
     </div>
 </template>
@@ -22,11 +22,23 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 .climate {
   align-items: flex-start;
   display: flex;
   flex-wrap: wrap;
   min-height: 100vh;
+
+  // > *:nth-child(3n + 1) {
+  //   background: transparentize(lightgoldenrodyellow, 0.4);
+  // }
+
+  // > *:nth-child(3n + 2) {
+  //   background: transparentize(orange, 0.8);
+  // }
+
+  > *:nth-child(2n) {
+    background: var(--color-green-transparent);
+  }
 }
 </style>
