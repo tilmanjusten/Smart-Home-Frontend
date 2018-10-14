@@ -3,7 +3,8 @@ const item = {
   te: null,
   hu: null,
   deviceId: null,
-  type: null
+  type: null,
+  mo: null
 }
 
 export default {

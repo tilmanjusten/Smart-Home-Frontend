@@ -60,6 +60,7 @@ export default {
   flex: 0 0 (100% / 3);
   height: 50vh;
   text-align: center;
+  padding: 1rem;
   position: relative;
 
   &::before {

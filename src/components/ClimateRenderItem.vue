@@ -83,6 +83,7 @@ export default {
   flex-direction: column;
   font-weight: 700;
   justify-content: stretch;
+  padding: 1rem;
   text-decoration: none;
 }
 

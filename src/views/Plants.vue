@@ -1,18 +1,31 @@
 <template>
     <div class="plants">
-        <h1>Pflanzen</h1>
+        <PlantRenderItem deviceId="INKE" title="Schlafzimmer" />
+        <PlantRenderItem deviceId="ODIN" title="Balken" />
+        <PlantRenderItem deviceId="KUNO" title="Treppe" />
     </div>
 </template>
 
 <script>
+import PlantRenderItem from '@/components/PlantRenderItem'
+
 export default {
   name: 'plants',
-  components: {}
+  components: {
+    PlantRenderItem
+  }
 }
 </script>
 
-<style>
+<style lang="scss">
 .plants {
-  background: #eef;
+  align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 100vh;
+
+  > *:nth-child(2n) {
+    background: var(--color-green-transparent);
+  }
 }
 </style>

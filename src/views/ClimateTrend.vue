@@ -1,25 +1,30 @@
 <template>
     <div class="climate-trend">
-        <h1>Klima-Trends</h1>
+      <div class="climate-trend__main">
+        <h1>Wetter-Trends</h1>
+        <p>
+          Keine Daten vorhanden.
+        </p>
+      </div>
     </div>
 </template>
 
 <script>
 export default {
   name: 'climate-trend',
-  components: {
-
-  },
-  created () {
-    if (this.$store.getters.items.length < 1) {
-      this.$store.dispatch('populate')
-    }
-  }
+  components: {}
 }
 </script>
 
 <style>
 .climate-trend {
-  background: #eef;
+  align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 100vh;
+}
+
+.climate-trend__main {
+  padding: 1rem;
 }
 </style>

@@ -1,6 +1,11 @@
 <template>
     <div class="plants-trend">
+      <div class="plants-trend__main">
         <h1>Pflanzen-Trends</h1>
+        <p>
+          Keine Daten vorhanden.
+        </p>
+      </div>
     </div>
 </template>
 
@@ -13,6 +18,13 @@ export default {
 
 <style>
 .plants-trend {
-  background: #eef;
+  align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 100vh;
+}
+
+.plants-trend__main {
+  padding: 1rem;
 }
 </style>
