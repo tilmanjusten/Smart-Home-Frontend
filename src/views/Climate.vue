@@ -13,6 +13,11 @@ export default {
   name: 'climate',
   components: {
     ClimateRenderItem
+  },
+  created () {
+    if (this.$store.getters.items.length < 1) {
+      this.$store.dispatch('populate')
+    }
   }
 }
 </script>

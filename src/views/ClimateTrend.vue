@@ -9,12 +9,17 @@ export default {
   name: 'climate-trend',
   components: {
 
+  },
+  created () {
+    if (this.$store.getters.items.length < 1) {
+      this.$store.dispatch('populate')
+    }
   }
 }
 </script>
 
 <style>
-    .climate-trend {
-        background: #eef;
-    }
+.climate-trend {
+  background: #eef;
+}
 </style>

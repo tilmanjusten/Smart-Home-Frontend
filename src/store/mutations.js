@@ -1,9 +1,19 @@
+import store from '@/store'
+
 export default {
   addItem (state, item) {
     state.items.push(item)
   },
   populateItems (state, data) {
-    console.log('mutation.populateItems')
-    console.log(data)
+    state.items = data
+
+    store.dispatch('pupulateLatest')
+  },
+  populateDevices (state, data) {
+    state.devices = data
+  },
+  setLatestItem (state, item) {
+    state.latest = { ...state.latest, ...item }
+    state.latestItemByDeviceId[item.deviceId] = { ...state.latestItemByDeviceId[item.deviceId], ...item }
   }
 }

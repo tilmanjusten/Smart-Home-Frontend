@@ -1,3 +1,12 @@
 import io from 'socket.io-client'
+import store from '@/store'
 
-export default io('localhost:3000')
+const socket = io('localhost:3000')
+
+socket.on('update', data => {
+  store.dispatch('addItem', data)
+})
+
+export default () => {
+
+}
