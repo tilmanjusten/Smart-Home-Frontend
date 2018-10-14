@@ -29,14 +29,6 @@ export default {
   flex-wrap: wrap;
   min-height: 100vh;
 
-  // > *:nth-child(3n + 1) {
-  //   background: transparentize(lightgoldenrodyellow, 0.4);
-  // }
-
-  // > *:nth-child(3n + 2) {
-  //   background: transparentize(orange, 0.8);
-  // }
-
   > *:nth-child(2n) {
     background: var(--color-green-transparent);
   }
