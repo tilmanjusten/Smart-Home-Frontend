@@ -13,9 +13,15 @@
 import LightRenderItem from '@/components/LightRenderItem.vue'
 
 export default {
-  name: 'lights',
+  name: 'lights-view',
   components: {
     LightRenderItem
+  },
+  created () {
+    if (!this.$store.getters.lastUpdatedLightsStateFromApi) {
+      console.log('created: updateLightsStateFromApi')
+      this.$store.dispatch('updateLightsStateFromApi')
+    }
   }
 }
 </script>

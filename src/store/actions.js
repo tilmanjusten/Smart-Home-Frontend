@@ -1,6 +1,7 @@
 import axios from 'axios'
 
 const apiBaseUrl = process.env.NODE_ENV === 'production' ? 'http://raspi:3000' : 'http://localhost:3000'
+const lightsApiBaseUrl = 'http://lichter.fritz.box'
 
 export default {
   addItem ({ commit }, item) {
@@ -39,5 +40,21 @@ export default {
   },
   setLatestItem ({ commit }, item) {
     commit('setLatestItem', item.origin)
+  },
+  updateLightsStateFromApi ({ commit, getters }) {
+    let requests = []
+
+    getters.lights.forEach((light, lightIndex) => {
+      const request = axios.get(`${lightsApiBaseUrl}/state/${light.name_id}`)
+        .then(data => {
+          commit('setLightState', { id: lightIndex, state: data.data.state })
+        })
+
+      requests.push(request)
+    })
+
+    Promise.all(requests).then(() => {
+      commit('lastUpdatedLightsStateFromApi', true)
+    })
   }
 }

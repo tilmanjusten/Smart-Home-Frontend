@@ -11,5 +11,10 @@ export default {
   },
   latestItemByDeviceId: state => deviceId => {
     return state.latestItemByDeviceId[deviceId]
-  }
+  },
+  lastUpdatedLightsStateFromApi: state => state.lastUpdatedLightsStateFromApi,
+  lights: state => state.lights,
+  lightById: state => id => state.lights.filter(light => light.id === id),
+  lightsActive: state => state.lights.filter(light => light.state === 'on'),
+  lightsInActive: state => state.lights.filter(light => light.state === 'off')
 }
