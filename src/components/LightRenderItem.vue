@@ -16,11 +16,11 @@ export default {
   name: 'light-render-item',
   props: [
     'title',
-    'deviceId'
+    'deviceId',
+    'status'
   ],
   data () {
     return {
-      status: 'off',
       baseUrl: 'http://lichter.fritz.box'
     }
   },
@@ -45,12 +45,12 @@ export default {
     }
   },
   mounted () {
-    axios.get(`${this.baseUrl}/state/${this.deviceId}`)
-      .then(res => {
-        if (res.data.hasOwnProperty('state')) {
-          this.status = res.data.state
-        }
-      })
+    // axios.get(`${this.baseUrl}/state/${this.deviceId}`)
+    //   .then(res => {
+    //     if (res.data.hasOwnProperty('state')) {
+    //       this.status = res.data.state
+    //     }
+    //   })
   }
 }
 </script>

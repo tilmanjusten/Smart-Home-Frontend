@@ -1,11 +1,12 @@
 <template>
     <div class="lights">
-        <LightRenderItem deviceId="lichterkette" title="Lichterkette" />
-        <LightRenderItem deviceId="sofalicht" title="Sofa &amp; Regal" />
-        <LightRenderItem deviceId="galerielicht" title="Galerie" />
-        <LightRenderItem deviceId="tuerlicht" title="Tür" />
-        <LightRenderItem deviceId="wohnzimmerlicht" title="Wohnzimmer" />
-        <LightRenderItem deviceId="alle-lichter" title="Alle Lichter" />
+        <LightRenderItem
+          v-for="light in lights"
+          :key="light.id"
+          :status="light.state"
+          :deviceId="light.name_id"
+          :title="light.name">
+        </LightRenderItem>
     </div>
 </template>
 
@@ -17,9 +18,13 @@ export default {
   components: {
     LightRenderItem
   },
+  computed: {
+    lights () {
+      return this.$store.getters.lights
+    }
+  },
   created () {
     if (!this.$store.getters.lastUpdatedLightsStateFromApi) {
-      console.log('created: updateLightsStateFromApi')
       this.$store.dispatch('updateLightsStateFromApi')
     }
   }
