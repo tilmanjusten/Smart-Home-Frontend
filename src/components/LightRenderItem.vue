@@ -37,19 +37,20 @@ export default {
 
       axios.get(this.action)
         .then(res => {
-          let status = res.data.trim().toLowerCase()
-
-          if (status === 'on' || status === 'off') {
-            this.status = status
-          } else {
-            this.status = this.status === 'on' ? 'off' : 'on'
+          if (res.data.hasOwnProperty('state')) {
+            this.status = res.data.state
           }
         })
         .catch(err => console.error(err))
     }
   },
   mounted () {
-    // get light state from ${this.baseUrl}/state/${this.deviceId}
+    axios.get(`${this.baseUrl}/state/${this.deviceId}`)
+      .then(res => {
+        if (res.data.hasOwnProperty('state')) {
+          this.status = res.data.state
+        }
+      })
   }
 }
 </script>
@@ -76,6 +77,7 @@ export default {
     right: 0;
     top: 0;
     bottom: 3.5rem;
+    transition: background 0.5s 0s ease-out;
     z-index: -1;
   }
 }
@@ -107,20 +109,18 @@ export default {
   margin-bottom: 2rem;
 
   path {
+    transition: all 0.5s 0s ease-out;
     fill: #fff;
+    stroke: transparent;
+    stroke-width: 2px;
   }
 
   .light-item--on & {
-    path {
-      fill: #fff;
-    }
   }
 
   .light-item--off & {
     path {
-      fill: #fff;
       stroke: #fff;
-      stroke-width: 2px;
     }
   }
 }
