@@ -18,11 +18,11 @@ export default {
   devices: [],
   lastUpdatedLightsStateFromApi: false,
   lights: [{
-    'id': 0,
-    'name': 'Alle Lichter',
-    'name_id': 'alle-lichter',
-    'state': 'off',
-    'dependents': [
+    id: 0,
+    name: 'Alle Lichter',
+    name_id: 'alle-lichter',
+    state: 'off',
+    dependents: [
       'wohnzimmerlicht',
       'sofalicht',
       'lichterkette',
@@ -30,33 +30,33 @@ export default {
       'galerielicht'
     ]
   }, {
-    'id': 1,
-    'name': 'Wohnzimmerlicht',
-    'name_id': 'wohnzimmerlicht',
-    'state': 'off',
-    'dependents': [
+    id: 1,
+    name: 'Wohnzimmerlicht',
+    name_id: 'wohnzimmerlicht',
+    state: 'off',
+    dependents: [
       'sofalicht',
       'lichterkette'
     ]
   }, {
-    'id': 2,
-    'name': 'Sofa & Regal',
-    'name_id': 'sofalicht',
-    'state': 'off'
+    id: 2,
+    name: 'Sofa & Regal',
+    name_id: 'sofalicht',
+    state: 'off'
   }, {
-    'id': 3,
-    'name': 'Lichterkette',
-    'name_id': 'lichterkette',
-    'state': 'off'
+    id: 3,
+    name: 'Lichterkette',
+    name_id: 'lichterkette',
+    state: 'off'
   }, {
-    'id': 4,
-    'name': 'Türlicht',
-    'name_id': 'tuerlicht',
-    'state': 'off'
+    id: 5,
+    name: 'Galerielicht',
+    name_id: 'galerielicht',
+    state: 'off'
   }, {
-    'id': 5,
-    'name': 'Galerielicht',
-    'name_id': 'galerielicht',
-    'state': 'off'
+    id: 4,
+    name: 'Türlicht',
+    name_id: 'tuerlicht',
+    state: 'off'
   }]
 }
