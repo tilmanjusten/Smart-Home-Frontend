@@ -10,8 +10,6 @@
 </template>
 
 <script>
-import axios from 'axios'
-
 export default {
   name: 'light-render-item',
   props: [
@@ -19,38 +17,24 @@ export default {
     'deviceId',
     'status'
   ],
-  data () {
-    return {
-      baseUrl: 'http://lichter.fritz.box'
-    }
-  },
   computed: {
     action () {
       let action = this.status === 'on' ? 'off' : 'on'
 
-      return `${this.baseUrl}/switch/${this.deviceId}/${action}`
+      return `${this.$store.getters.lightsApiBaseUrl}/switch/${this.deviceId}/${action}`
     }
   },
   methods: {
     toggle (event) {
       event.preventDefault()
 
-      axios.get(this.action)
-        .then(res => {
-          if (res.data.hasOwnProperty('state')) {
-            this.status = res.data.state
-          }
-        })
-        .catch(err => console.error(err))
+      let data = {
+        name_id: this.deviceId,
+        state: this.status === 'on' ? 'off' : 'on'
+      }
+
+      this.$store.dispatch('switchLight', data)
     }
-  },
-  mounted () {
-    // axios.get(`${this.baseUrl}/state/${this.deviceId}`)
-    //   .then(res => {
-    //     if (res.data.hasOwnProperty('state')) {
-    //       this.status = res.data.state
-    //     }
-    //   })
   }
 }
 </script>

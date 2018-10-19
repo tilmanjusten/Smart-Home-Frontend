@@ -46,8 +46,10 @@ export default {
 
     getters.lights.forEach((light, lightIndex) => {
       const request = axios.get(`${lightsApiBaseUrl}/state/${light.name_id}`)
-        .then(data => {
-          commit('setLightState', { id: lightIndex, state: data.data.state })
+        .then(res => {
+          if (res.data.hasOwnProperty('state')) {
+            commit('setLightState', { id: lightIndex, state: res.data.state })
+          }
         })
 
       requests.push(request)
@@ -56,5 +58,16 @@ export default {
     Promise.all(requests).then(() => {
       commit('lastUpdatedLightsStateFromApi', true)
     })
+  },
+  switchLight ({ commit, getters }, data) {
+    let action = `${getters.lightsApiBaseUrl}/switch/${data.name_id}/${data.state}`
+
+    axios.get(action)
+      .then(res => {
+        if (res.data.hasOwnProperty('state')) {
+          commit('setLightState', { id: getters.lightIndexByNameId(data.name_id), state: res.data.state })
+        }
+      })
+      .catch(err => console.error(err))
   }
 }

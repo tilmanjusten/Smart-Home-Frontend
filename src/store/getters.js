@@ -12,9 +12,11 @@ export default {
   latestItemByDeviceId: state => deviceId => {
     return state.latestItemByDeviceId[deviceId]
   },
+  lightsApiBaseUrl: state => state.lightsApiBaseUrl,
   lastUpdatedLightsStateFromApi: state => state.lastUpdatedLightsStateFromApi,
   lights: state => state.lights,
   lightById: state => id => state.lights.filter(light => light.id === id),
   lightsActive: state => state.lights.filter(light => light.state === 'on'),
-  lightsInActive: state => state.lights.filter(light => light.state === 'off')
+  lightsInActive: state => state.lights.filter(light => light.state === 'off'),
+  lightIndexByNameId: state => nameId => state.lights.findIndex(light => light.name_id === nameId)
 }

@@ -16,6 +16,7 @@ export default {
     'ODIN': { ...item }
   },
   devices: [],
+  lightsApiBaseUrl: 'http://lichter.fritz.box',
   lastUpdatedLightsStateFromApi: false,
   lights: [{
     id: 0,
