@@ -45,8 +45,8 @@ export default {
       return Math.max(Math.min(100, (this.temperature - min) / range), 0)
     },
     temperatureScale () {
-      let min = -10
-      let max = 47
+      let min = -9
+      let max = 45
       let range = max - min
 
       return Math.max(Math.min(100, (this.temperature - min) / range), 0)
