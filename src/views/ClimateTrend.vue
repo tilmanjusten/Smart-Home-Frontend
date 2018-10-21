@@ -16,6 +16,7 @@
       </div>
       <div class="climate-trend__main">
         <chartist
+          class="climate-trend__chart"
           type="Line"
           :data="chartData"
           :options="chartOptions">
@@ -36,9 +37,6 @@ Vue.use(chartist, {
 
 export default {
   name: 'climate-trend',
-  components: {
-
-  },
   data () {
     return {
       chartOptions: {
@@ -61,7 +59,7 @@ export default {
           }
         },
         axisY: {
-          labelInterpolationFnc: (value, c, d, e, f) => {
+          labelInterpolationFnc: (value) => {
             return value < 50 ? `${value}°C` : `${value}%`
           }
         }
@@ -203,27 +201,57 @@ export default {
   }
 }
 
-.ct-series-a .ct-line {
-  stroke: #e2431e;
-}
+.climate-trend__chart {
+  .ct-series {
+    .ct-line {
+      stroke-width: 3px;
+    }
 
-.ct-series-b .ct-line {
-  stroke: #e2431e;
-}
+    .ct-point {
+      stroke-width: 7px;
+    }
+  }
 
-.ct-series-c .ct-line {
-  stroke: #6f9654;
-}
+  .ct-series-a {
+    .ct-line,
+    .ct-point {
+      stroke: #e2431e;
+    }
+  }
 
-.ct-series-d .ct-line {
-  stroke: #6f9654;
-}
+  .ct-series-b {
+    .ct-line,
+    .ct-point {
+      stroke: #e2431e;
+    }
+  }
 
-.ct-series-e .ct-line {
-  stroke: #1c91c0;
-}
+  .ct-series-c {
+    .ct-line,
+    .ct-point {
+      stroke: #6f9654;
+    }
+  }
 
-.ct-series-f .ct-line {
-  stroke: #1c91c0;
+  .ct-series-d {
+    .ct-line,
+    .ct-point {
+      stroke: #6f9654;
+    }
+  }
+
+  .ct-series-e {
+    .ct-line,
+    .ct-point {
+      stroke: #1c91c0;
+    }
+  }
+
+  .ct-series-f {
+    .ct-line,
+    .ct-point {
+      stroke: #1c91c0;
+    }
+  }
 }
 </style>
