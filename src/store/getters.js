@@ -5,8 +5,14 @@ export default {
   itemsByType: state => type => {
     return state.items.filter(item => item.type === type)
   },
-  itemsByDeviceId: state => deviceId => {
-    return state.items.filter(item => item.origin.deviceId === deviceId)
+  itemsByDeviceId: state => (deviceId, property = null) => {
+    let items = state.items.filter(item => item.deviceId === deviceId)
+
+    if (property === null) {
+      return items
+    }
+
+    return items.filter(item => item.hasOwnProperty(property) && item[property] !== null)
   },
   latestItemByDeviceId: state => (deviceId, property = null) => {
     const reversedItems = [...state.items].reverse()

@@ -1,113 +1,122 @@
 <template>
     <div class="climate-trend">
       <h1 class="climate-trend__title">Wetter-Verlauf</h1>
+      <div class="climate-trend__legend">
+        <ol>
+          <li class="climate-trend__legend-item climate-trend__legend-item--zeus">
+            Wohnzimmer
+          </li>
+          <li class="climate-trend__legend-item climate-trend__legend-item--thor">
+            Schlafzimmer
+          </li>
+          <li class="climate-trend__legend-item climate-trend__legend-item--amun">
+            Badezimmer
+          </li>
+        </ol>
+      </div>
       <div class="climate-trend__main">
-        <GChart
-          type="LineChart"
+        <chartist
+          type="Line"
           :data="chartData"
-          :options="chartOptions"
-        />
+          :options="chartOptions">
+        </chartist>
       </div>
     </div>
 </template>
 
 <script>
-import { GChart } from 'vue-google-charts'
+import moment from 'moment'
+import chartist from 'vue-chartist'
+import Vue from 'vue'
 
-const chartOptions = {
-  legend: {
-    position: 'top',
-    fontSize: 12
-  },
-  height: 340,
-  chartArea: {
-    left: 50,
-    top: 10,
-    width: '90%',
-    height: '85%'
-  },
-  series: {
-    0: {
-      color: '#e2431e'
-    },
-    1: {
-      color: '#e2431e'
-    },
-    2: {
-      color: '#6f9654'
-    },
-    3: {
-      color: '#6f9654'
-    },
-    4: {
-      color: '#1c91c0'
-    },
-    5: {
-      color: '#1c91c0'
-    }
-  },
-  hAxis: {
-    title: null,
-    format: 'd.MM., H:mm',
-    fontSize: 12
-  },
-  vAxis: {
-    format: '#',
-    title: '°C / %'
-  },
-  trendlines: {},
-  explorer: {
-    axis: 'horizontal',
-    actions: ['dragToPan', 'dragToZoom', 'rightClickToReset'],
-    maxZoomIn: 0.25,
-    maxZoomOut: 2,
-    zoomDelta: 1.5
-  }
-}
-
-const processItemForChart = item => {
-  const res = [new Date(item.date)]
-
-  item.data.map(v => {
-    if (v === null) {
-      res.push(0)
-      res.push(0)
-    } else if (v !== null && v !== undefined) {
-      res.push(v.hu * 1)
-      res.push(v.te * 1)
-    }
-  })
-
-  return res
-}
+Vue.use(chartist, {
+  messageNoData: 'You have not enough data',
+  classNoData: 'empty'
+})
 
 export default {
   name: 'climate-trend',
   components: {
-    GChart
+
   },
   data () {
     return {
-      chartOptions
+      chartOptions: {
+        lineSmooth: true,
+        showPoint: false,
+        chartPadding: {
+          top: 15,
+          right: 15,
+          bottom: 5,
+          left: 10
+        },
+        high: 90,
+        low: 10,
+        height: '75vh',
+        axisX: {
+          type: this.$chartist.FixedScaleAxis,
+          divisor: 5,
+          labelInterpolationFnc: value => {
+            return moment(value).format('D.MM., H:mm')
+          }
+        },
+        axisY: {
+          labelInterpolationFnc: (value, c, d, e, f) => {
+            return value < 50 ? `${value}°C` : `${value}%`
+          }
+        }
+      }
     }
   },
   computed: {
     chartData () {
-      let header = [
-        [
-          'Zeit',
-          'SZ: %',
-          '°C',
-          'WZ: %',
-          '°C',
-          'Bad: %',
-          '°C'
-        ]
-      ]
-      let items = this.$store.getters.items.slice(-1200)
-      let preparedItems = items.map(processItemForChart)
+      const series = []
+      const dataMap = [{
+        name: 'Wohnzimmer Temperatur',
+        deviceId: 'ZEUS',
+        property: 'te'
+      }, {
+        name: 'Wohnzimmer Luftfeuchtigkeit',
+        deviceId: 'ZEUS',
+        property: 'hu'
+      }, {
+        name: 'Schlafzimmer Temperatur',
+        deviceId: 'THOR',
+        property: 'te'
+      }, {
+        name: 'Schlafzimmer Luftfeuchtigkeit',
+        deviceId: 'THOR',
+        property: 'hu'
+      }, {
+        name: 'Badezimmer Temperatur',
+        deviceId: 'AMUN',
+        property: 'te'
+      }, {
+        name: 'Badezimmer Luftfeuchtigkeit',
+        deviceId: 'AMUN',
+        property: 'hu'
+      }]
 
-      return [...header, ...preparedItems]
+      // Temperature
+      dataMap.forEach(entry => {
+        let items = this.$store.getters.itemsByDeviceId(entry.deviceId, entry.property).slice(-1200)
+        let data = items.map(item => {
+          return {
+            x: new Date(item.date),
+            y: item[entry.property] * 1
+          }
+        })
+
+        series.push({
+          name: entry.name,
+          data
+        })
+      })
+
+      return {
+        labels: ['WZ °C', 'WZ %', 'SZ °C', 'SZ %', 'BZ °C', 'BZ %'],
+        series
+      }
     }
   },
   created () {
@@ -118,7 +127,9 @@ export default {
 }
 </script>
 
-<style>
+<style src='chartist/dist/chartist.min.css'></style>
+
+<style lang="scss">
 .climate-trend {
   align-items: flex-start;
   display: flex;
@@ -129,8 +140,7 @@ export default {
 }
 
 .climate-trend__title {
-  flex: 0 1 auto;
-  height: 25vh;
+  flex: 1 1 auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -139,8 +149,81 @@ export default {
 }
 
 .climate-trend__main {
-  flex: 1 1 auto;
-  padding: 0 1rem 1rem;
+  flex: 1 1 75vh;
   height: 75vh;
+  padding: 0 1rem;
+}
+
+.climate-trend__legend {
+  flex: 0 1 5;
+
+  ol {
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    margin: 0;
+  }
+}
+
+.climate-trend__legend-item {
+  flex: 0 1 auto;
+  padding: 0 2rem 0 20px;
+  position: relative;
+
+  &::before {
+    border-radius: 50%;
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    left: 0;
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    margin: auto 0;
+  }
+}
+
+.climate-trend__legend-item--amun {
+  &::before {
+    background: #1c91c0;
+  }
+}
+
+.climate-trend__legend-item--thor {
+  &::before {
+    background: #6f9654;
+  }
+}
+
+.climate-trend__legend-item--zeus {
+  &::before {
+    background: #e2431e;
+  }
+}
+
+.ct-series-a .ct-line {
+  stroke: #e2431e;
+}
+
+.ct-series-b .ct-line {
+  stroke: #e2431e;
+}
+
+.ct-series-c .ct-line {
+  stroke: #6f9654;
+}
+
+.ct-series-d .ct-line {
+  stroke: #6f9654;
+}
+
+.ct-series-e .ct-line {
+  stroke: #1c91c0;
+}
+
+.ct-series-f .ct-line {
+  stroke: #1c91c0;
 }
 </style>
