@@ -1,8 +1,8 @@
 <template>
     <div class="climate">
-        <ClimateRenderItem deviceId="INKE" title="Schlafzimmer" />
-        <ClimateRenderItem deviceId="ODIN" title="Wohnzimmer" />
-        <ClimateRenderItem deviceId="PURL" title="Badezimmer" />
+        <ClimateRenderItem deviceId="THOR" title="Schlafzimmer" />
+        <ClimateRenderItem deviceId="ZEUS" title="Wohnzimmer" />
+        <ClimateRenderItem deviceId="AMUN" title="Badezimmer" />
     </div>
 </template>
 

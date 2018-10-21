@@ -1,3 +1,5 @@
+import * as defaults from '@/lib/defaults'
+
 export default {
   items: state => state.items,
   itemsByType: state => type => {
@@ -6,11 +8,21 @@ export default {
   itemsByDeviceId: state => deviceId => {
     return state.items.filter(item => item.origin.deviceId === deviceId)
   },
-  latestItem: state => {
-    return state.latestItem
-  },
-  latestItemByDeviceId: state => deviceId => {
-    return state.latestItemByDeviceId[deviceId]
+  latestItemByDeviceId: state => (deviceId, property = null) => {
+    const reversedItems = [...state.items].reverse()
+    let item
+
+    if (property === null) {
+      item = reversedItems.find(item => item.deviceId === deviceId)
+    } else {
+      item = reversedItems.find(item => item.deviceId === deviceId && item.hasOwnProperty(property) && item[property] !== null)
+    }
+
+    if (!item) {
+      return defaults.item
+    }
+
+    return item
   },
   lightsApiBaseUrl: state => state.lightsApiBaseUrl,
   lastUpdatedLightsStateFromApi: state => state.lastUpdatedLightsStateFromApi,

@@ -59,10 +59,10 @@ export default {
       return Math.max(Math.min(100, (this.humidity - min) / range), 0)
     },
     humidity () {
-      return this.$store.getters.latestItemByDeviceId(this.deviceId).hu
+      return this.$store.getters.latestItemByDeviceId(this.deviceId, 'hu').hu
     },
     temperature () {
-      return this.$store.getters.latestItemByDeviceId(this.deviceId).te
+      return this.$store.getters.latestItemByDeviceId(this.deviceId, 'te').te
     },
     date () {
       return new Date(this.$store.getters.latestItemByDeviceId(this.deviceId).date)

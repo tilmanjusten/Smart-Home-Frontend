@@ -6,7 +6,6 @@ const lightsApiBaseUrl = 'http://lichter.fritz.box'
 export default {
   addItem ({ commit }, item) {
     commit('addItem', item)
-    commit('setLatestItem', item.origin)
   },
   populate ({ commit }) {
     axios.get(`${apiBaseUrl}/api/v1/items`)
@@ -20,26 +19,6 @@ export default {
         commit('populateDevices', data.data)
       })
       .catch(err => console.error(err))
-  },
-  pupulateLatest ({ commit, state }) {
-    let latestItems = state.items.slice(-1)
-
-    if (!latestItems.length) {
-      return
-    }
-
-    let latest = latestItems[0]
-
-    latest.data.forEach(item => {
-      if (!item) {
-        return
-      }
-
-      commit('setLatestItem', item)
-    })
-  },
-  setLatestItem ({ commit }, item) {
-    commit('setLatestItem', item.origin)
   },
   updateLightsStateFromApi ({ commit, getters }) {
     let requests = []

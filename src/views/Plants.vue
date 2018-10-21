@@ -1,8 +1,7 @@
 <template>
     <div class="plants">
-        <PlantRenderItem deviceId="INKE" title="Schlafzimmer" />
-        <PlantRenderItem deviceId="ODIN" title="Balken" />
-        <PlantRenderItem deviceId="KUNO" title="Treppe" />
+        <PlantRenderItem deviceId="THOR" title="Schlafzimmer" />
+        <PlantRenderItem deviceId="ZEUS" title="Balken" />
     </div>
 </template>
 
