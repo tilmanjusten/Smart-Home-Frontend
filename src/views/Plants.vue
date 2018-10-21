@@ -1,7 +1,7 @@
 <template>
     <div class="plants">
-        <PlantRenderItem deviceId="THOR" title="Schlafzimmer" />
-        <PlantRenderItem deviceId="ZEUS" title="Balken" />
+        <PlantRenderItem deviceId="ZEUS" title="Balken" room="Wohnzimmer" />
+        <PlantRenderItem deviceId="THOR" title="Rose" room="Schlafzimmer" />
     </div>
 </template>
 
@@ -12,6 +12,11 @@ export default {
   name: 'plants',
   components: {
     PlantRenderItem
+  },
+  created () {
+    if (this.$store.getters.items.length < 1) {
+      this.$store.dispatch('populate')
+    }
   }
 }
 </script>

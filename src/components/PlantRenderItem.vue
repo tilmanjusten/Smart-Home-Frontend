@@ -2,6 +2,7 @@
     <div :class="'plant-item ' + typeClass">
       <h2 class="plant-item__label">
         {{title}}
+        <div class="plant-item__room">{{room}}</div>
       </h2>
       <div class="plant-item__main">
         <div class="plant-item__moisture" v-if="moisture">
@@ -19,6 +20,7 @@ export default {
   name: 'plant-render-item',
   props: [
     'title',
+    'room',
     'deviceId'
   ],
   data () {
@@ -29,18 +31,12 @@ export default {
   },
   computed: {
     source () {
-      let template = {
-        date: null,
-        deviceId: null,
-        mo: null,
-        type: null
-      }
-      let stateItem = this.$store.getters.latestItemByDeviceId(this.deviceId) || {}
+      let item = this.$store.getters.latestItemByDeviceId(this.deviceId, 'mo')
 
-      return { ...template, ...stateItem }
+      return item
     },
     moisture () {
-      return this.source.mo
+      return this.source.mv * 1
     },
     date () {
       return this.source.date
@@ -51,7 +47,7 @@ export default {
 
 <style lang="scss">
 .plant-item {
-  flex: 0 0 (100% / 3);
+  flex: 0 0 (100% / 2);
   height: 100vh;
   text-align: center;
   align-content: center;
@@ -67,9 +63,16 @@ export default {
 
 .plant-item__label {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   flex: 1 1 25vh;
-  align-items: center;
   margin: 0;
+  text-align: center;
+}
+
+.plant-item__room {
+  font-size: 1rem;
+  font-weight: normal;
 }
 
 .plant-item__main {
