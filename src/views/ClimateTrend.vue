@@ -30,9 +30,11 @@ import moment from 'moment'
 import chartist from 'vue-chartist'
 import Vue from 'vue'
 
+moment.locale('de')
+
 Vue.use(chartist, {
-  messageNoData: 'You have not enough data',
-  classNoData: 'empty'
+  messageNoData: 'keine Daten vorhanden',
+  classNoData: 'climate-trend__chart--empty'
 })
 
 export default {
@@ -50,12 +52,11 @@ export default {
         },
         high: 90,
         low: 10,
-        height: '75vh',
         axisX: {
           type: this.$chartist.FixedScaleAxis,
-          divisor: 5,
+          divisor: 6,
           labelInterpolationFnc: value => {
-            return moment(value).format('D.MM., H:mm')
+            return `${moment(value).format('ddd, D.MM.,')}\n ${moment(value).format('HH:mm')} Uhr`
           }
         },
         axisY: {
@@ -202,6 +203,16 @@ export default {
 }
 
 .climate-trend__chart {
+  height: inherit;
+
+  .ct-labels {
+  }
+
+  .ct-label {
+    color: #000;
+    font-weight: bold;
+  }
+
   .ct-series {
     .ct-line {
       stroke-width: 3px;
@@ -253,5 +264,9 @@ export default {
       stroke: #1c91c0;
     }
   }
+}
+
+.climate-trend__chart--empty {
+  text-align: center;
 }
 </style>

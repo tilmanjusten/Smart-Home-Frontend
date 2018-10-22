@@ -27,7 +27,12 @@ import moment from 'moment'
 import chartist from 'vue-chartist'
 import Vue from 'vue'
 
-Vue.use(chartist)
+moment.locale('de')
+
+Vue.use(chartist, {
+  messageNoData: 'keine Daten vorhanden',
+  classNoData: 'plants-trend__chart--empty'
+})
 
 export default {
   name: 'plants-trend',
@@ -43,14 +48,13 @@ export default {
           bottom: 5,
           left: 10
         },
-        high: 100,
+        high: 80,
         low: 0,
-        height: '75vh',
         axisX: {
           type: this.$chartist.FixedScaleAxis,
-          divisor: 5,
+          divisor: 7,
           labelInterpolationFnc: value => {
-            return moment(value).format('D.MM., H:mm')
+            return `${moment(value).format('ddd, D.MM.')}`
           }
         },
         axisY: {
@@ -181,6 +185,16 @@ export default {
 }
 
 .plants-trend__chart {
+  height: inherit;
+
+  .ct-labels {
+  }
+
+  .ct-label {
+    color: #000;
+    font-weight: bold;
+  }
+
   .ct-series {
     .ct-line {
       stroke-width: 3px;
@@ -211,5 +225,9 @@ export default {
       stroke: #1c91c0;
     }
   }
+}
+
+.plants-trend__chart--empty {
+  text-align: center;
 }
 </style>
