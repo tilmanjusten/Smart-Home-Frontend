@@ -1,6 +1,6 @@
 <template>
     <div class="plants">
-        <PlantRenderItem deviceId="ZEUS" title="Balken" room="Wohnzimmer" />
+        <PlantRenderItem deviceId="ZEUS" title="Efeutute" room="Wohnzimmer" />
         <PlantRenderItem deviceId="THOR" title="Rose" room="Schlafzimmer" />
     </div>
 </template>

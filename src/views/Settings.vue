@@ -2,7 +2,10 @@
     <div class="settings">
       <h1 class="settings__title">Einstellungen</h1>
       <div class="settings__main">
-
+        <h2>Icons</h2>
+        <ul>
+          <li>Topfpflanze: from the Noun Project created by Chameleon Design</li>
+        </ul>
       </div>
     </div>
 </template>
@@ -22,6 +25,10 @@ export default {
   flex-direction: column;
   align-items: stretch;
   min-height: 100vh;
+
+  h2 {
+    text-align: center;
+  }
 }
 
 .settings__title {
