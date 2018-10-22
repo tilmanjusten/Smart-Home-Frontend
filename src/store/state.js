@@ -12,7 +12,7 @@ export default {
       'wohnzimmerlicht',
       'sofalicht',
       'lichterkette',
-      'tuerlicht',
+      'tischregal',
       'galerielicht'
     ]
   }, {
@@ -35,14 +35,14 @@ export default {
     name_id: 'lichterkette',
     state: 'off'
   }, {
+    id: 4,
+    name: 'Tischregal',
+    name_id: 'tischregal',
+    state: 'off'
+  }, {
     id: 5,
     name: 'Galerielicht',
     name_id: 'galerielicht',
-    state: 'off'
-  }, {
-    id: 4,
-    name: 'Türlicht',
-    name_id: 'tuerlicht',
     state: 'off'
   }]
 }
