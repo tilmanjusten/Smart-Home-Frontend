@@ -1,7 +1,45 @@
-# Smart Home Client 
+# Smart Home Frontend 
 
 This application is the frontend part and talks to the Smart Home Backend via WebSockets.  
 The UI is designed to run on a 7" touch display attached to a RaspberryPi.
+
+## Views
+
+### Lights
+
+Display and toggle light state.
+
+<img src="docs/img/views/lights.png" alt="Lights view">
+
+### Weather
+
+Display the current weather for every client.
+
+<img src="docs/img/views/weather.png" alt="Displays the current weather">
+
+#### Charts
+
+Display the weather data of the last 24 to 30 hours.
+
+<img src="docs/img/views/weather-charts.png" alt="Displays the weather data as line chart">
+
+### Plants
+
+Display the current moisture level.
+
+<img src="docs/img/views/weather.png" alt="Plants view">
+
+#### Charts
+
+Display the moisture level of the last seven days.
+
+<img src="docs/img/views/plants-charts.png" alt="Render moisture as line chart">
+
+## Settings
+
+Open for further development.
+
+<img src="docs/img/views/plants-charts.png" alt="Display settings">
 
 ## Installation
 
