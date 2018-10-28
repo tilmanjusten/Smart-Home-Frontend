@@ -5,8 +5,8 @@ export default {
   populateItems (state, data) {
     state.items = data
   },
-  populateDevices (state, data) {
-    state.devices = data
+  addDevice (state, device) {
+    state.devices.push(device)
   },
   setLightState (state, light) {
     state.lights[light.id].state = light.state

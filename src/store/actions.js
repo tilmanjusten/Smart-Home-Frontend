@@ -5,20 +5,40 @@ const lightsApiBaseUrl = 'http://lichter.fritz.box'
 
 export default {
   addItem ({ commit }, item) {
+    item.date = new Date(item.date)
+
     commit('addItem', item)
   },
-  populate ({ commit }) {
+  populate ({ dispatch }) {
     axios.get(`${apiBaseUrl}/api/v1/items`)
       .then(data => {
-        commit('populateItems', data.data)
+        dispatch('populateItems', data.data)
       })
       .catch(err => console.error(err))
 
     axios.get(`${apiBaseUrl}/api/v1/devices`)
       .then(data => {
-        commit('populateDevices', data.data)
+        dispatch('populateDevices', data.data)
       })
       .catch(err => console.error(err))
+  },
+  // trigger state change only once on app start
+  // addItem does trigger state change for every addition
+  populateItems ({ commit }, data) {
+    if (data && data.length) {
+      let items = data.map(item => {
+        item.date = new Date(item.date)
+
+        return item
+      })
+
+      commit('populateItems', items)
+    }
+  },
+  populateDevices ({ commit }, data) {
+    if (data && data.length) {
+      data.map(device => commit('addDevice', device))
+    }
   },
   updateLightsStateFromApi ({ commit, getters }) {
     let requests = []
