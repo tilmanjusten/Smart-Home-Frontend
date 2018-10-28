@@ -39,7 +39,7 @@ Display the moisture level of the last seven days.
 
 Open for further development.
 
-<img src="docs/img/views/plants-charts.png" alt="Display settings">
+<img src="docs/img/views/settings.png" alt="Display settings">
 
 ## Installation
 
