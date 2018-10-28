@@ -95,16 +95,21 @@ export default {
         deviceId: 'AMUN',
         property: 'hu'
       }]
+      const now = Date.now()
+      // 24h as ms
+      const dateRange = 1000 * 60 * 60 * 24
 
       // Temperature
       dataMap.forEach(entry => {
-        let items = this.$store.getters.itemsByDeviceId(entry.deviceId, entry.property).slice(-1200)
-        let data = items.map(item => {
-          return {
-            x: new Date(item.date),
-            y: item[entry.property] * 1
-          }
-        })
+        let items = this.$store.getters.itemsByDeviceId(entry.deviceId, entry.property)
+        let data = items
+          .filter(item => now - item.date.getTime() < dateRange)
+          .map(item => {
+            return {
+              x: item.date,
+              y: item[entry.property] * 1
+            }
+          })
 
         series.push({
           name: entry.name,
