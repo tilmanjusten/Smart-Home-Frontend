@@ -1,7 +1,7 @@
 # Smart Home Frontend 
 
 This application is the frontend part and talks to the Smart Home Backend via WebSockets.  
-The UI is designed to run on a 7" touch display attached to a RaspberryPi.
+The UI is designed to run on a 5" touch display (800&times;480px) attached to a RaspberryPi.
 
 ## Views
 
