@@ -1,22 +1,19 @@
 import axios from 'axios'
 
-const apiBaseUrl = process.env.NODE_ENV === 'production' ? 'http://raspi:3000' : 'http://localhost:3000'
-const lightsApiBaseUrl = 'http://lichter.fritz.box'
-
 export default {
   addItem ({ commit }, item) {
     item.date = new Date(item.date)
 
     commit('addItem', item)
   },
-  populate ({ dispatch }) {
-    axios.get(`${apiBaseUrl}/api/v1/items`)
+  populate ({ dispatch, getters }) {
+    axios.get(`${getters.weatherApiBaseUrl}/api/v1/items`)
       .then(data => {
         dispatch('populateItems', data.data)
       })
       .catch(err => console.error(err))
 
-    axios.get(`${apiBaseUrl}/api/v1/devices`)
+    axios.get(`${getters.weatherApiBaseUrl}/api/v1/devices`)
       .then(data => {
         dispatch('populateDevices', data.data)
       })
@@ -44,7 +41,7 @@ export default {
     let requests = []
 
     getters.lights.forEach((light, lightIndex) => {
-      const request = axios.get(`${lightsApiBaseUrl}/state/${light.name_id}`)
+      const request = axios.get(`${getters.lightsApiBaseUrl}/state/${light.name_id}`)
         .then(res => {
           if (res.data.hasOwnProperty('state')) {
             commit('setLightState', { id: lightIndex, state: res.data.state })

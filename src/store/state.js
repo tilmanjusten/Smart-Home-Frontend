@@ -1,6 +1,9 @@
 export default {
   items: [],
   devices: [],
+  socketUrl: 'raspberrypi:3000',
+  // weatherApiBaseUrl: process.env.NODE_ENV === 'production' ? 'http://raspberrypi:3000' : 'http://localhost:3000',
+  weatherApiBaseUrl: 'http://raspberrypi:3000',
   lightsApiBaseUrl: 'http://lichter.fritz.box',
   lastUpdatedLightsStateFromApi: false,
   lights: [{

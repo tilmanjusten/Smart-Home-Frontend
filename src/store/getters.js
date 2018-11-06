@@ -30,6 +30,8 @@ export default {
 
     return item
   },
+  socketUrl: state => state.socketUrl,
+  weatherApiBaseUrl: state => state.weatherApiBaseUrl,
   lightsApiBaseUrl: state => state.lightsApiBaseUrl,
   lastUpdatedLightsStateFromApi: state => state.lastUpdatedLightsStateFromApi,
   lights: state => state.lights,
