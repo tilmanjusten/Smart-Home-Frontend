@@ -77,16 +77,21 @@ export default {
         deviceId: 'THOR',
         property: 'mv'
       }]
+      const now = Date.now()
+      // 7 days as ms
+      const dateRange = 1000 * 60 * 60 * 24 * 7
 
       // Temperature
       dataMap.forEach(entry => {
-        let items = this.$store.getters.itemsByDeviceId(entry.deviceId, entry.property).slice(-700)
-        let data = items.map(item => {
-          return {
-            x: new Date(item.date),
-            y: item[entry.property] * 1
-          }
-        })
+        let items = this.$store.getters.itemsByDeviceId(entry.deviceId, entry.property)
+        let data = items
+          .filter(item => now - item.date.getTime() < dateRange)
+          .map(item => {
+            return {
+              x: item.date,
+              y: item[entry.property] * 1
+            }
+          })
 
         series.push({
           name: entry.name,
